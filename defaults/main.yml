@@ -30,3 +30,4 @@ supervisor_programs_present: {}
 supervisor_programs_absent: {}
 supervisor_groups_present: {}
 supervisor_groups_absent: {}
+supervisor_service_manager: {}

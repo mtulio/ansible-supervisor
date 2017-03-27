@@ -1,0 +1,16 @@
+---
+- set_fact:
+    supervisor_service_manager: initd
+  when: (ansible_distribution_version | version_compare('15.04', '<')) or
+        (ansible_distribution == 'Amazon')
+
+- set_fact:
+    supervisor_service_manager: systemd
+  when: (ansible_distribution_version | version_compare('15.04', '<'))
+
+- include: "service-{{ supervisor_service_manager }}.yml"
+  tags:
+    - configuration
+    - supervisor
+    - supervisor-configure
+    - "supervisor-configure-{{ supervisor_service_manager }}"
